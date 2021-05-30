@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "972890866344",
+    "project_id": "bagimodal-df417",
+    "storage_bucket": "bagimodal-df417.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972890866344:android:1283042c52cd7d82bcb89d",
+        "android_client_info": {
+          "package_name": "com.example.bagimodal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972890866344-ar62a28av6nadmbp018nkjguqrs0c3dc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLg1ggmasZFWpmhbHZrj05pIlag5ZfKak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972890866344-ar62a28av6nadmbp018nkjguqrs0c3dc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
