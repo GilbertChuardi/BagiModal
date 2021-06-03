@@ -22,4 +22,8 @@
     <string name="hello_profile_fragment">Hello profile fragment</string>
     <string name="create_new_project">Create new Project</string>
     <string name="funded_project">Funded Project</string>
+    <string name="donate">Donate</string>
+    <string name="description">Description</string>
+    <string name="judul">Judul</string>
+    <string name="submit_donation">Submit Donation</string>
 </resources>

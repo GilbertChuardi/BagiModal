@@ -24,8 +24,17 @@
         android:textColor="@color/black"
         android:textSize="16sp" />
 
+    <TextView
+        android:textColor="@color/black"
+        android:id="@+id/tv_money"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="175dp"
+        android:layout_marginStart="170dp"
+        android:layout_height="wrap_content"
+        tools:text="Rp 100000"/>
+
     <Button
-        android:id="@+id/btn_create_project"
+        android:id="@+id/btn_to_create_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -36,7 +45,7 @@
         android:textColor="@color/black" />
 
     <Button
-        android:id="@+id/btn_funded_project"
+        android:id="@+id/btn_to_funded_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

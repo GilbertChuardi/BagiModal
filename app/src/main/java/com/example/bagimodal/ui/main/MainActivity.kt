@@ -6,7 +6,7 @@ import com.example.bagimodal.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         const val EXTRA_NAME = "extra_name"
     }
 

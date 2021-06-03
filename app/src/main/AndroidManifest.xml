@@ -12,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BagiModal">
+        <activity android:name=".ui.main.home.detail.DetailActivity"></activity>
         <activity
             android:name=".ui.main.profile.project.CreateProjectActivity"
             android:screenOrientation="portrait"

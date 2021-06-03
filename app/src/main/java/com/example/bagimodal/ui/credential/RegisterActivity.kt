@@ -10,13 +10,15 @@ import com.example.bagimodal.R
 import com.example.bagimodal.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
 
-class RegisterActivity : AppCompatActivity(),View.OnClickListener {
+class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
-    private lateinit var activityRegisterBinding:ActivityRegisterBinding
+    private lateinit var activityRegisterBinding: ActivityRegisterBinding
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        title = "Register"
 
         activityRegisterBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(activityRegisterBinding.root)
@@ -28,7 +30,7 @@ class RegisterActivity : AppCompatActivity(),View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        when(v.id){
+        when (v.id) {
             R.id.btn_register -> doRegister()
         }
     }
@@ -40,7 +42,9 @@ class RegisterActivity : AppCompatActivity(),View.OnClickListener {
             return
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(activityRegisterBinding.edEmail.text.toString()).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(activityRegisterBinding.edEmail.text.toString())
+                .matches()
+        ) {
             activityRegisterBinding.edEmail.error = "Please enter valid email"
             activityRegisterBinding.edEmail.requestFocus()
             return
@@ -52,7 +56,10 @@ class RegisterActivity : AppCompatActivity(),View.OnClickListener {
             return
         }
 
-        auth.createUserWithEmailAndPassword(activityRegisterBinding.edEmail.text.toString(), activityRegisterBinding.edPassword.text.toString())
+        auth.createUserWithEmailAndPassword(
+            activityRegisterBinding.edEmail.text.toString(),
+            activityRegisterBinding.edPassword.text.toString()
+        )
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     val user = auth.currentUser
