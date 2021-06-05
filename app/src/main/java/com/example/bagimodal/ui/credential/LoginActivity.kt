@@ -78,7 +78,6 @@ class LoginActivity : AppCompatActivity(), OnClickListener {
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
                     sharePreference.save("email", activityLoginBinding.edEmail.text.toString())
-                    sharePreference.save("money",100000)
                     val user = auth.currentUser
                     updateUI(user)
                 } else {

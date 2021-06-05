@@ -36,7 +36,7 @@ class HomeFragment : Fragment() {
 
         fragmentHomeBinding.recyclerView.layoutManager = LinearLayoutManager(context)
         val db = FirebaseFirestore.getInstance()
-        val query = db.collection("dataUser")
+        val query = db.collection("projectUser")
         val options =
             FirestoreRecyclerOptions.Builder<DataModel>().setQuery(query, DataModel::class.java)
                 .build()
@@ -67,8 +67,8 @@ class HomeFragment : Fragment() {
             val tvDescription: TextView = holder.itemView.findViewById(R.id.tv_description_home)
             val cvItem: CardView = holder.itemView.findViewById(R.id.cv_item)
             tvEmail.text = StringBuilder("By : " + model.email)
-            tvJudul.text = StringBuilder("Judul proyek  : " + model.judul)
-            tvDescription.text = StringBuilder("Description   : " + model.description)
+            tvJudul.text = StringBuilder("Judul proyek : " + model.judul)
+            tvDescription.text = StringBuilder("Description : " + model.description)
             cvItem.setOnClickListener(CustomOnItemClickListener(
                 position,
                 object : CustomOnItemClickListener.OnItemClickCallback {

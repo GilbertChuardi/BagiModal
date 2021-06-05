@@ -2,6 +2,7 @@ package com.example.bagimodal.ui.credential
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.widget.Toast
@@ -9,16 +10,19 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.bagimodal.R
 import com.example.bagimodal.databinding.ActivityRegisterBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RegisterActivity : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var activityRegisterBinding: ActivityRegisterBinding
+    private lateinit var db: FirebaseFirestore
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         title = "Register"
+        db = FirebaseFirestore.getInstance()
 
         activityRegisterBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(activityRegisterBinding.root)
@@ -36,6 +40,8 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun doRegister() {
+        activityRegisterBinding.tvEmailExists.visibility = View.INVISIBLE
+
         if (activityRegisterBinding.edEmail.text.toString().isEmpty()) {
             activityRegisterBinding.edEmail.error = "Please enter email"
             activityRegisterBinding.edEmail.requestFocus()
@@ -64,17 +70,37 @@ class RegisterActivity : AppCompatActivity(), View.OnClickListener {
                 if (task.isSuccessful) {
                     val user = auth.currentUser
                     user?.sendEmailVerification()
-                        ?.addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
+                        ?.addOnCompleteListener { tasks ->
+                            if (tasks.isSuccessful) {
+                                val data = hashMapOf(
+                                    "money" to 100000
+                                )
+
+                                db.collection("moneyUser")
+                                    .document(activityRegisterBinding.edEmail.text.toString())
+                                    .set(data)
+                                    .addOnSuccessListener {
+                                        Log.d(
+                                            "create money data",
+                                            "DocumentSnapshot successfully written!"
+                                        )
+                                        finish()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Toast.makeText(
+                                            this,
+                                            "Error adding money data",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                        Log.w("Create Project", "Error adding document", e)
+                                    }
+
                                 startActivity(Intent(this, LoginActivity::class.java))
                                 finish()
                             }
                         }
                 } else {
-                    Toast.makeText(
-                        baseContext, "Sign Up failed. Try again after some time.",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    activityRegisterBinding.tvEmailExists.visibility = View.VISIBLE
                 }
             }
     }

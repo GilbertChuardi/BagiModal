@@ -26,4 +26,5 @@
     <string name="description">Description</string>
     <string name="judul">Judul</string>
     <string name="submit_donation">Submit Donation</string>
+    <string name="email_exists">Email already exists. Please login.</string>
 </resources>

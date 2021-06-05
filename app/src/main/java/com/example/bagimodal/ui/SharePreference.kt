@@ -15,19 +15,6 @@ class SharePreference(val context: Context) {
         editor.apply()
     }
 
-    fun save(KEY_NAME: String, value: Int) {
-        val editor: SharedPreferences.Editor = sharedPref.edit()
-        editor.putInt(KEY_NAME, value)
-        editor.apply()
-    }
-
     fun getValueString(KEY_NAME: String): String? = sharedPref.getString(KEY_NAME, null)
 
-    fun getValueInt(KEY_NAME: String): Int =sharedPref.getInt(KEY_NAME, 0)
-
-    fun clearSharedPreference() {
-        val editor: SharedPreferences.Editor = sharedPref.edit()
-        editor.clear()
-        editor.apply()
-    }
 }

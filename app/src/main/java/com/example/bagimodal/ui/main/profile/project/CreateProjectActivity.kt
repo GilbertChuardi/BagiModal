@@ -45,16 +45,15 @@ class CreateProjectActivity : AppCompatActivity(), View.OnClickListener {
             val data = hashMapOf(
                 "email" to email,
                 "judul" to judul,
-                "description" to description
+                "description" to description,
+                "totaldonation" to 0
             )
 
-            db.collection("dataUser")
-                .add(data)
-                .addOnSuccessListener { documentReference ->
-                    Log.d(
-                        "Create Project",
-                        "DocumentSnapshot added with ID: ${documentReference.id}"
-                    )
+            db.collection("projectUser")
+                .document(judul)
+                .set(data)
+                .addOnSuccessListener {
+                    Log.d("create project", "DocumentSnapshot successfully written!")
                     finish()
                 }
                 .addOnFailureListener { e ->

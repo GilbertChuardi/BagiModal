@@ -40,6 +40,17 @@
         app:layout_constraintTop_toBottomOf="@id/tv_email_detail"
         tools:text="lol" />
 
+    <TextView
+        android:id="@+id/tv_totaldonation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        tools:text = "12345"
+        app:layout_constraintTop_toBottomOf="@id/tv_description_detail"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <EditText
         android:id="@+id/ed_donate"
         android:layout_width="match_parent"
