@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#2ab639"
+    android:background="#90ee90"
     android:padding="16dp"
     tools:context=".ui.main.profile.project.CreateProjectActivity">
 
@@ -30,33 +30,83 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_description"
+        android:id="@+id/tv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="@string/description"
+        android:layout_marginTop="32dp"
+        android:text="@string/category"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_judul" />
 
+    <Spinner
+        android:id="@+id/spinner_category"
+        android:layout_width="150dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/white"
+        app:layout_constraintStart_toEndOf="@id/tv_category"
+        app:layout_constraintTop_toBottomOf="@id/tv_judul" />
+
+    <TextView
+        android:id="@+id/spinner_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_target_donation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/target_donation"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_category" />
+
+    <EditText
+        android:id="@+id/ed_target_donation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="32dp"
+        android:background="@color/white"
+        android:inputType="number"
+        app:layout_constraintStart_toEndOf="@id/tv_target_donation"
+        app:layout_constraintTop_toBottomOf="@id/tv_category" />
+
+    <TextView
+        android:id="@+id/tv_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/description"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_target_donation" />
+
     <EditText
         android:id="@+id/ed_description"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="32dp"
         android:background="@color/white"
-        android:inputType="textLongMessage"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType="textMultiLine"
+        android:maxLines="6"
         app:layout_constraintStart_toEndOf="@id/tv_description"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/tv_target_donation" />
 
     <Button
         android:id="@+id/btn_create_project"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/black"
-        android:text="Create Project"
+        android:text="@string/create_project"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

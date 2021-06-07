@@ -3,6 +3,8 @@ package com.example.bagimodal.ui.main.profile.project
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.bagimodal.R
@@ -21,6 +23,8 @@ class CreateProjectActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val options = arrayOf("Arts","Music","Game","Tech","Film")
+
         activityCreateProjectBinding = ActivityCreateProjectBinding.inflate(layoutInflater)
         setContentView(activityCreateProjectBinding.root)
         title = "Create New Project"
@@ -28,6 +32,16 @@ class CreateProjectActivity : AppCompatActivity(), View.OnClickListener {
         sharePreference = SharePreference(this)
         db = FirebaseFirestore.getInstance()
         activityCreateProjectBinding.btnCreateProject.setOnClickListener(this)
+        activityCreateProjectBinding.spinnerCategory.adapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,options)
+        activityCreateProjectBinding.spinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                activityCreateProjectBinding.spinnerValue.text = options[position]
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+                activityCreateProjectBinding.spinnerValue.text = ""
+            }
+        }
         email = sharePreference.getValueString("email").toString()
     }
 
@@ -40,13 +54,17 @@ class CreateProjectActivity : AppCompatActivity(), View.OnClickListener {
     private fun createProject() {
         val judul = activityCreateProjectBinding.edJudul.text.toString().trim()
         val description = activityCreateProjectBinding.edDescription.text.toString().trim()
+        val category = activityCreateProjectBinding.spinnerValue.text.toString().trim()
+        val targetdonation = activityCreateProjectBinding.edTargetDonation.text.toString().trim()
 
-        if (judul.isNotEmpty() && description.isNotEmpty()) {
+        if (judul.isNotEmpty() && description.isNotEmpty() && category.isNotEmpty() && targetdonation.isNotEmpty()) {
             val data = hashMapOf(
                 "email" to email,
                 "judul" to judul,
                 "description" to description,
-                "totaldonation" to 0
+                "category" to category,
+                "totaldonation" to 0,
+                "targetdonation" to targetdonation.toInt()
             )
 
             db.collection("projectUser")

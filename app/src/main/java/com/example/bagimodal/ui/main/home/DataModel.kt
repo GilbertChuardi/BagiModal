@@ -8,5 +8,7 @@ class DataModel(
     val email: String = "",
     val judul: String = "",
     val description: String = "",
-    var totaldonation: Int = 0
+    val category:String = "",
+    var totaldonation: Int = 0,
+    var targetdonation:Int = 0
 ) : Parcelable

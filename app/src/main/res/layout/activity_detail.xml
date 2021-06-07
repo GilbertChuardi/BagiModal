@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#e9e9e9"
     android:padding="16dp"
     tools:context=".ui.main.home.detail.DetailActivity">
 
@@ -41,36 +42,72 @@
         tools:text="lol" />
 
     <TextView
-        android:id="@+id/tv_totaldonation"
+        android:id="@+id/tv_category_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_description_detail"
+        tools:text="Arts" />
+
+    <TextView
+        android:id="@+id/tv_totaldonation_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_detail"
+        tools:text="Target : Rp. 12345 / " />
+
+    <TextView
+        android:id="@+id/tv_target_donation_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        app:layout_constraintStart_toEndOf="@id/tv_totaldonation_detail"
+        app:layout_constraintTop_toBottomOf="@id/tv_category_detail"
+        tools:text="20000" />
+
+    <TextView
+        android:id="@+id/tv_donation_reached_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/tv_target_donation_detail"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:visibility="invisible"
         android:textSize="20sp"
-        tools:text = "12345"
-        app:layout_constraintTop_toBottomOf="@id/tv_description_detail"
-        app:layout_constraintStart_toStartOf="parent"/>
+        android:text="@string/donation_reached"/>
 
     <EditText
         android:id="@+id/ed_donate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@android:color/darker_gray"
         android:inputType="number"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@id/btn_submit_donate"
-        android:layout_marginBottom="8dp" />
+        app:layout_constraintBottom_toTopOf="@id/btn_submit_donate" />
 
     <Button
         android:id="@+id/btn_submit_donate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
         android:text="@string/submit_donation"
         android:textAllCaps="false"
         android:visibility="gone"
-        android:layout_marginBottom="32dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_donate"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btn_donate"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_donate"

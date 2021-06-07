@@ -40,7 +40,14 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
         activityDetailBinding.tvEmailDetail.text = dataUser.email
         activityDetailBinding.tvJudulDetail.text = dataUser.judul
         activityDetailBinding.tvDescriptionDetail.text = dataUser.description
-        activityDetailBinding.tvTotaldonation.text = dataUser.totaldonation.toString()
+        activityDetailBinding.tvCategoryDetail.text = dataUser.category
+        activityDetailBinding.tvTotaldonationDetail.text = StringBuilder("Target donation : Rp. " + dataUser.totaldonation.toString() + "/")
+        activityDetailBinding.tvTargetDonationDetail.text = dataUser.targetdonation.toString()
+
+        if(dataUser.totaldonation>dataUser.targetdonation){
+            activityDetailBinding.btnDonate.visibility = View.GONE
+            activityDetailBinding.tvDonationReachedDetail.visibility = View.VISIBLE
+        }
         activityDetailBinding.btnDonate.setOnClickListener(this)
         activityDetailBinding.btnSubmitDonate.setOnClickListener(this)
     }
@@ -63,8 +70,6 @@ class DetailActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun doDonate() {
-
-
         val donatehm = activityDetailBinding.edDonate.text.toString().toInt()
 
         moneyleft -= donatehm

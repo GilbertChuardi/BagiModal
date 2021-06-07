@@ -27,4 +27,8 @@
     <string name="judul">Judul</string>
     <string name="submit_donation">Submit Donation</string>
     <string name="email_exists">Email already exists. Please login.</string>
+    <string name="target_donation">Target Donation</string>
+    <string name="create_project">Create Project</string>
+    <string name="donation_reached">Donation REACHED!!!!</string>
+    <string name="category">Category</string>
 </resources>
